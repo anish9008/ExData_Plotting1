@@ -1,3 +1,5 @@
+
+#Ensure the unzipped text file is there in the current working directory  
 rawfile <- file("household_power_consumption.txt", "r")
 cat(grep("(^Date)|(^[1|2]/2/2007)",readLines(rawfile), value=TRUE), sep="\n", file="filtered.txt")
 close(rawfile)
