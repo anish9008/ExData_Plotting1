@@ -1,8 +1,5 @@
-
-#Ensure the unzipped text file is there in the current working directory 
-#zip<-unz("exdata-data-household_power_consumption.zip",filename="household_power_consumption.txt")
 rawfile <- file("household_power_consumption.txt", "r")
-cat(grep("(^Date)|(^[1|2]/2/2007)",readLines(zip), value=TRUE), sep="\n", file="filtered.txt")
+cat(grep("(^Date)|(^[1|2]/2/2007)",readLines(rawfile), value=TRUE), sep="\n", file="filtered.txt")
 close(rawfile)
 
 power=read.table("filtered.txt",sep=";",header=TRUE, na.strings="?",stringsAsFactors=FALSE)
