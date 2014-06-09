@@ -1,7 +1,8 @@
 
 #Ensure the unzipped text file is there in the current working directory 
+#zip<-unz("exdata-data-household_power_consumption.zip",filename="household_power_consumption.txt")
 rawfile <- file("household_power_consumption.txt", "r")
-cat(grep("(^Date)|(^[1|2]/2/2007)",readLines(rawfile), value=TRUE), sep="\n", file="filtered.txt")
+cat(grep("(^Date)|(^[1|2]/2/2007)",readLines(zip), value=TRUE), sep="\n", file="filtered.txt")
 close(rawfile)
 
 power=read.table("filtered.txt",sep=";",header=TRUE, na.strings="?",stringsAsFactors=FALSE)
@@ -16,6 +17,6 @@ with(power,plot(DateTime,Sub_metering_1,type="n",ylab="Energy sub metering",xlab
 with(power,lines(DateTime,Sub_metering_1))
 with(power,lines(DateTime,Sub_metering_2,col="Red"))
 with(power,lines(DateTime,Sub_metering_3,col="Blue"))
-legend("topright",lwd=1,col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),cex=.85)
+legend("topright",lwd=1,col=c("black","red","blue"),bty="n",legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),cex=.85)
 with(power,plot(DateTime,Global_reactive_power,type="l",ylab="Global_reactive_power",xlab="datetime",cex.axis=.6,cex.lab=.95))
 dev.off()
